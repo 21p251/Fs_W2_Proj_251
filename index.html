@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+</head>
+<body>
+     
+
+
+
+   <script>
+    class Book
+    {
+        constructor(bookTitle,bookAuthor,yearPublished,readStatus)
+        {
+            this.bookTitle=bookTitle;
+            this.bookAuthor=bookAuthor;
+            this.yearPublished=yearPublished;
+            this.readStatus=readStatus;
+        }
+         getSummary()
+         {
+            return `BookName=${this.bookTitle},BookAuthor=${this.bookAuthor},Year Of the Book Published=${this.yearPublished}`;
+         }
+         toggleReadStatus()
+         {
+            return `ReadStatus=${this.readStatus}`;
+         }
+    }
+      const library=[];
+      let addBook=function(book)
+      {
+        library.push(book);
+      }
+        let removeLastBook=function(book)
+        {
+            library.pop(book);
+        }
+        let addBookToFront=function(book)
+        {
+            library.unshift(book);
+        }
+        let removeFirstBook=function(book)
+        {
+            library.shift(book);
+        }
+
+        let getAllTitles=function()
+        {
+         const t= library.map(temp=>temp.bookTitle);
+         for(let j in t)
+         {
+            console.log(t[j]);
+         }
+        }
+        let getBooksByAuthor=function(author)
+        {
+        const  result =library.filter(temp=>temp.bookAuthor==author);
+        for(i in result)
+        {
+          console.log(result[i].bookTitle);
+        }
+        }
+        let totalBooksPublishedBeforeyear=function(input)
+        {
+            let year=library.filter(temp=>temp.yearPublished<input)
+        let count=0;
+           for(i in year)
+           {
+            count++;
+           }
+           console.log("Total Number Of Book Published before the year"+input+ " is "+count);
+        }
+        let readStatus=function(input)
+        {
+              let r=library.filter(temp=>temp.readStatus==input)
+              for(tr in r)
+              {
+                console.log(r[tr].bookTitle);
+              }
+        }
+        let getbooksromstart=function(in1,in2)
+        {
+            let start=library.slice(in1,in2);
+            console.log(start);
+        }
+        let book1=new Book("My Hero Academia","Izuku Midoriya",2017,true);
+        let book2=new Book("Attack On Titan","Eren Yaeger",2011,false);
+        let book3=new Book("Tokyo Revengers","Eren Yaeger",2019,true);
+        let book4=new Book("That Time I Reincated into Slime","Veldora",2022,true);
+
+        addBook(book1);
+        addBook(book2);
+        addBook(book3);
+        addBook(book4);
+        
+   // console.log(library[1].getSummary());
+    getAllTitles();
+    getBooksByAuthor("Eren Yaeger");
+    totalBooksPublishedBeforeyear(2020);
+    readStatus(true);
+   </script>
+</body>
+</html>
